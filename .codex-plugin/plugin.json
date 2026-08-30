@@ -1,0 +1,35 @@
+{
+  "name": "stewai",
+  "version": "1.0.3",
+  "description": "Discover and run protected StewAI recipes through keyless MCP access.",
+  "author": {
+    "name": "StewAI",
+    "email": "support@stewai.com",
+    "url": "https://stewai.com"
+  },
+  "homepage": "https://stewai.com",
+  "license": "Apache-2.0",
+  "keywords": ["stewai", "mcp", "workflows", "automation", "recipes"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "StewAI",
+    "shortDescription": "Discover and run reusable AI workflows",
+    "longDescription": "Use StewAI to explore workflow examples, search the protected recipe marketplace, preview required inputs, estimate credits, run recipes, and retrieve final declared results after email sign-in.",
+    "developerName": "StewAI",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Read", "Write"],
+    "websiteURL": "https://stewai.com",
+    "privacyPolicyURL": "https://stewai.com/privacy",
+    "termsOfServiceURL": "https://stewai.com/terms",
+    "brandColor": "#D5673C",
+    "composerIcon": "./assets/icon.svg",
+    "logo": "./assets/icon.png",
+    "screenshots": [],
+    "defaultPrompt": [
+      "What can StewAI help me automate?",
+      "Show me examples of StewAI workflows.",
+      "Find a live StewAI recipe for contract review."
+    ]
+  }
+}

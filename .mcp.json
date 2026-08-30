@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "stewai": {
+      "type": "http",
+      "url": "https://api.stewai.com/mcp"
+    }
+  }
+}

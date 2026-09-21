@@ -1,7 +1,7 @@
 {
   "name": "stewai",
-  "version": "1.0.3",
-  "description": "Discover and run protected StewAI recipes through keyless MCP access.",
+  "version": "1.1.0",
+  "description": "Find, run, create, test, and privately reuse StewAI recipes through keyless MCP access.",
   "author": {
     "name": "StewAI",
     "email": "support@stewai.com",
@@ -14,8 +14,8 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "StewAI",
-    "shortDescription": "Discover and run reusable AI workflows",
-    "longDescription": "Use StewAI to explore workflow examples, search the protected recipe marketplace, preview required inputs, estimate credits, run recipes, and retrieve final declared results after email sign-in.",
+    "shortDescription": "Find, run, and build AI workflows",
+    "longDescription": "Use StewAI to find and compare accessible workflows, estimate and run them, or build, test, qualify, and privately reuse a new recipe after email sign-in.",
     "developerName": "StewAI",
     "category": "Productivity",
     "capabilities": ["Interactive", "Read", "Write"],
@@ -27,9 +27,9 @@
     "logo": "./assets/icon.png",
     "screenshots": [],
     "defaultPrompt": [
-      "What can StewAI help me automate?",
-      "Show me examples of StewAI workflows.",
-      "Find a live StewAI recipe for contract review."
+      "Find and compare the best accessible StewAI recipes for my task, then preview the strongest option without running it.",
+      "Run a StewAI recipe with my input, monitor it, then summarize its declared results, step trace, and settled credit charge.",
+      "Build a private StewAI recipe for a recurring task, test it, repair failures, and commit a qualified version."
     ]
   }
 }

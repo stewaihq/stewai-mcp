@@ -1,6 +1,6 @@
 # StewAI
 
-StewAI gives agents protected access to reusable AI workflows. Version 1.1.0 can search and compare
+StewAI gives agents protected access to reusable AI workflows. Version 1.1.2 can search and compare
 published recipes available to the signed-in account, estimate and run a suitable recipe, or build,
 test, qualify, and privately reuse a new one. Authentication uses a one-time email sign-in; users
 do not manage an API key.
@@ -54,16 +54,25 @@ continuation cursor so later steps remain reachable. Subrecipe composition uses 
 handoff: pass the `recipe_ref` returned by search or preview as `child_recipe_ref`; StewAI resolves
 and pins it privately. Bind the exact child recipe and revision, obtain approval, then resume the
 same activity.
-Version 1.1.0 does not support forking, public marketplace submission, safety approval, public
+Version 1.1.2 does not support forking, public marketplace submission, safety approval, public
 pricing, or creator compensation.
 
 ## Distribution status
 
-Version 1.1.0 is active in the Official MCP Registry as `com.stewai/stewai`. The OpenAI and
-Anthropic directory updates are in review. The tagged GitHub release provides deterministic
-`stewai-plugin.zip` and `stewai-mcp.zip` downloads; both connect to the production endpoint at
-`https://api.stewai.com/mcp`. Claude web, mobile, and Desktop use the remote connector and do not
-need either archive.
+Version 1.1.0 is active in the Official MCP Registry as `com.stewai/stewai`. Version 1.1.2 is the
+current package release for directory updates. The website and tagged GitHub release provide
+separate deterministic packages for each installation contract:
+
+- `stewai-openai-plugin.zip` carries only the `.codex-plugin` manifest used by OpenAI and Codex.
+  The legacy `stewai-plugin.zip` URL is a byte-identical compatibility alias.
+- `stewai-claude-plugin.zip` carries only the `.claude-plugin` manifest and the fixed public
+  `stewai-claude-code` OAuth client required by Claude Code.
+- `stewai-mcp-client.zip` carries a provider-neutral MCP configuration, README, and skill for
+  clients that accept a remote MCP server but neither vendor manifest.
+- `stewai-mcp.zip` remains the standalone MCP skill package.
+
+Every package connects to `https://api.stewai.com/mcp`. ChatGPT and Claude web/mobile users should
+install the published directory listing instead of uploading an archive.
 
 ## Links
 

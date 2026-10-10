@@ -1,6 +1,6 @@
 {
-  "name": "stewai",
-  "version": "1.1.0",
+  "name": "app-6a8f2681f7ec8191957fe2883676c9d2",
+  "version": "1.1.2",
   "description": "Find, run, create, test, and privately reuse StewAI recipes through keyless MCP access.",
   "author": {
     "name": "StewAI",
@@ -14,12 +14,13 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "StewAI",
-    "shortDescription": "Find, run, and build AI workflows",
+    "shortDescription": "Find, run, build workflows",
     "longDescription": "Use StewAI to find and compare accessible workflows, estimate and run them, or build, test, qualify, and privately reuse a new recipe after email sign-in.",
     "developerName": "StewAI",
     "category": "Productivity",
     "capabilities": ["Interactive", "Read", "Write"],
     "websiteURL": "https://stewai.com",
+    "supportURL": "https://stewai.com/support",
     "privacyPolicyURL": "https://stewai.com/privacy",
     "termsOfServiceURL": "https://stewai.com/terms",
     "brandColor": "#D5673C",

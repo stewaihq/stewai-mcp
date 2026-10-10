@@ -30,13 +30,14 @@ user to reconnect an older installation.
    `history`, duration, and current access. `results` are direct fits; `related_results` are
    adjacent recipes, so say so rather than presenting one as the requested task. Do not invent an
    overall quality score.
-3. If a candidate is sufficient, call `run_recipe` with `dry_run: true`. Tell the user what past
+3. If a candidate fits the task and contract, call `run_recipe` with `dry_run: true`. Tell the user what past
    runs of the recipe cost (`history`), any fee, and their balance, and obtain the user's approval
    before a real run when execution could spend credits or affect an external system. The user
-   decides; the balance does not have to cover the theoretical worst case. Then run once, poll `get_run`, read declared outputs with `get_results`, and
+   decides; the balance does not have to cover the theoretical worst case. A dry-run
+   `sufficient: false` value is not a refusal and must not prevent the approved real run. Then run once, poll `get_run`, read declared outputs with `get_results`, and
    inspect its paginated `steps` view when the user needs an explanation, the run fails, or the
    workflow is being dogfooded.
-4. If no candidate is sufficient, call `get_recipe_build` without `build_ref` to check recent
+4. If no candidate suitably fits the task and contract, call `get_recipe_build` without `build_ref` to check recent
    owned builds before starting another one.
 5. Start or continue one build. Apply the smallest useful draft change, run deterministic checks,
    and repair concrete failures before any paid review.
@@ -129,7 +130,8 @@ the facts plainly and let the user decide:
 - `available_credits` and `balance_as_of`: the user's spendable balance at that moment.
 - `estimated_credits`: a theoretical worst case (every model call retried at its maximum limits).
   It is rarely approached; mention it as the upper bound, not as the expected price. `sufficient`
-  only says whether that worst case fits.
+  only says whether that worst case fits. Never use `sufficient: false` to refuse or skip an
+  approved real run.
 
 A run is not refused because the worst case exceeds the balance. If credits run out during a run,
 the run pauses (`blocked`, with `credit_pause` in `get_run`) and can be resumed from the StewAI web

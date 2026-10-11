@@ -1,93 +1,60 @@
 # StewAI
 
-StewAI gives agents protected access to reusable AI workflows. Version 1.1.2 can search and compare
-published recipes available to the signed-in account, estimate and run a suitable recipe, or build,
-test, qualify, and privately reuse a new one. Authentication uses a one-time email sign-in; users
-do not manage an API key.
+**Give your agent superpowers.**
 
-The server is self-describing: a fresh agent calls `discover_stewai` to learn the connection,
-search, authoring, approval, execution, polling, and recovery sequence. Required operational
-knowledge is carried by MCP tool contracts and responses rather than hidden in this README.
+Keep the agent you already use. StewAI sits beside it with ready-to-run recipes for research
+synthesis, document extraction, executive summaries, data quality review, classification, and
+policy checks. Your agent finds the recipe, shows you what it needs, what it returns, and what
+past runs cost, and runs it only after you approve. The results come back into the
+conversation.
 
-## Agent workflow
+If nothing fits, your agent can build a private recipe, test it, and keep it for next time.
 
-The plugin first searches the currently approved, runnable public catalog and currently authorized
-recipes. If an existing capability fits,
-the agent previews its contract, dry-runs the cost, obtains any required approval, executes it, and
-returns declared results with settled billing.
+One email sign-in. No API key.
 
-If no existing recipe fits, the agent checks recent private builds before creating another one. It
-then uses free deterministic checks, quoted semantic review, selected-case repair, and a complete
-acceptance suite to qualify one exact revision. A successful commit creates a private, unlisted,
-unreviewed revision and returns a reference that can be dry-run and executed immediately by its
-creator. Recent build activity rows retain fresh poll references so another agent context can
-resume an in-flight or completed review instead of paying for a duplicate.
+## What it feels like
 
-Search returns an explicit `no_suitable_match` outcome instead of promoting a weak result. Preview
-declares required/default input state and size limits, and invalid run inputs return bounded,
-value-free diagnostics that identify the exact field and repair. Build inspection exposes a
-runtime-derived catalog for all 24 recipe node handlers and separates draft validity from
-unattended acceptance eligibility.
+1. **Ask.** "Check whether each citation in this draft supports its claim."
+2. **See it first.** Inputs, outputs, past-run cost, and your balance, before anything runs.
+3. **Approve.** The recipe runs once. Progress is visible while it runs.
+4. **Use the result.** Declared outputs come back to your agent, with a step trace where the
+   recipe allows it.
 
-## Public tools
+## Try asking
 
-The MCP server exposes six discovery and execution tools plus eight authoring tools when the
-corresponding server flags and OAuth scopes are enabled:
+- "Find a recipe that pulls obligations, owners, dates and renewal terms out of these
+  contracts, and quote it before running."
+- "Turn these meeting notes into decisions and action items."
+- "Review this dataset for missing values, duplicates, and conflicting definitions."
+- "Nothing fits my weekly operating brief. Build a private recipe, test it, and keep it."
 
-- `discover_stewai`, `search_recipes`, `get_recipe_preview`, `run_recipe`, `get_run`, and
-  `get_results`. The result tool keeps its declared-output default and also provides paginated,
-  sanitized step traces for runs paid by the signed-in account.
-- `start_recipe_build`, `get_recipe_build`, `update_recipe_build`, `check_recipe_build`,
-  `review_recipe_build`, `run_recipe_acceptance`, `get_recipe_build_activity`, and
-  `commit_recipe_build`.
+## Good to know
 
-Agents must dry-run before real execution and quote every paid authoring review or acceptance
-action. The dry run reports what past runs of the recipe cost, any fee, the balance, and a
-theoretical worst case; the user decides whether to run. Private and organization recipes do not
-incur a marketplace creator fee.
+- Search says no match rather than pushing a weak recipe at you.
+- A dry run always comes first. You decide whether a real run is worth its credits.
+- Recipes your agent builds stay private and unlisted. The plugin does not submit them to the
+  public marketplace, set prices, or approve safety.
+- Recipes can fail or return weak output, like any workflow. Your agent shows you what came
+  back, and you choose what to do next.
 
-The plugin does not expose recipe source, credentials, provider payloads, raw exceptions, or
-authoring acceptance-run traces. Owned normal runs of private and public-open recipes expose
-sanitized step parameters, available rendered inputs, and normalized results; execute-only public
-recipes retain their interface-only redaction. Oversized steps are reported individually with a
-continuation cursor so later steps remain reachable. Subrecipe composition uses the supervised
-handoff: pass the `recipe_ref` returned by search or preview as `child_recipe_ref`; StewAI resolves
-and pins it privately. Bind the exact child recipe and revision, obtain approval, then resume the
-same activity.
-Version 1.1.2 does not support forking, public marketplace submission, safety approval, public
-pricing, or creator compensation.
+## What the plugin connects to
 
-## Distribution status
-
-Version 1.1.0 is active in the Official MCP Registry as `com.stewai/stewai`. Version 1.1.2 is the
-current package release for directory updates. The website and tagged GitHub release provide
-separate deterministic packages for each installation contract:
-
-- `stewai-openai-plugin.zip` carries only the `.codex-plugin` manifest used by OpenAI and Codex.
-  The legacy `stewai-plugin.zip` URL is a byte-identical compatibility alias.
-- `stewai-claude-plugin.zip` carries only the `.claude-plugin` manifest and the fixed public
-  `stewai-claude-code` OAuth client required by Claude Code.
-- `stewai-mcp-client.zip` carries a provider-neutral MCP configuration, README, and skill for
-  clients that accept a remote MCP server but neither vendor manifest.
-- `stewai-mcp.zip` remains the standalone MCP skill package.
-
-Every package connects to `https://api.stewai.com/mcp`. ChatGPT and Claude web/mobile users should
-install the published directory listing instead of uploading an archive.
+The plugin connects to `https://api.stewai.com/mcp` and signs you in through your browser with
+OAuth. It sends the inputs you provide to the recipe you approve. It never exposes recipe
+source, credentials, or provider payloads, and it never asks you for an API key.
 
 ## Links
 
 - Website: https://stewai.com
+- Documentation: https://docs.stewai.com
 - Privacy: https://stewai.com/privacy
 - Terms: https://stewai.com/terms
 - Imprint: https://stewai.com/imprint
 - Support: support@stewai.com
 
-## License boundary
+## License
 
-Copyright 2026 Christian Mueller.
-
-The plugin manifest, MCP configuration, `stewai-mcp` skill, plugin README, and plugin icons are
-licensed under Apache-2.0. The complete license text is in `LICENSE`. This distribution license
-does not relicense StewAI, its backend, its Python SDK, or marketplace data, which remain subject
-to their existing terms. The StewAI name and logo remain protected, and no additional trademark
-permission is granted.
+Copyright 2026 Christian Mueller. This plugin package is licensed under Apache-2.0; the full
+text is in `LICENSE`. The license covers the manifest, MCP configuration, skill, README, and
+icons only. StewAI itself, its services, Python SDK, and marketplace data remain subject to
+their own terms, and the StewAI name and logo stay protected.

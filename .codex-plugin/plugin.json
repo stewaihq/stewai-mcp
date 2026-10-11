@@ -1,7 +1,7 @@
 {
   "name": "app-6a8f2681f7ec8191957fe2883676c9d2",
-  "version": "1.1.2",
-  "description": "Find, run, create, test, and privately reuse StewAI recipes through keyless MCP access.",
+  "version": "1.1.3",
+  "description": "Give your agent superpowers. Find and run tested AI workflows, or build a private one, from the agent you already use. Email sign-in, no API key.",
   "author": {
     "name": "StewAI",
     "email": "support@stewai.com",
@@ -14,8 +14,8 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "StewAI",
-    "shortDescription": "Find, run, build workflows",
-    "longDescription": "Use StewAI to find and compare accessible workflows, estimate and run them, or build, test, qualify, and privately reuse a new recipe after email sign-in.",
+    "shortDescription": "Give your agent superpowers.",
+    "longDescription": "Give your agent superpowers. Keep the agent you already use; StewAI sits beside it with ready-to-run recipes for research synthesis, document extraction, executive summaries, data quality review, classification, and policy checks. Your agent finds the recipe, shows you what it needs, what it returns, and what past runs cost, and runs it only after you approve. The results come back into the conversation. If nothing fits, your agent can build a private recipe, test it, and keep it for next time. One email sign-in, no API key. Search says no match rather than pushing a weak recipe at you. A dry run always comes first, and you decide whether a real run is worth its credits. Recipes your agent builds stay private and unlisted; the plugin does not submit them to the public marketplace, set prices, or approve safety. Recipes can fail or return weak output like any workflow; your agent shows you what came back and you choose what to do next.",
     "developerName": "StewAI",
     "category": "Productivity",
     "capabilities": ["Interactive", "Read", "Write"],
@@ -28,9 +28,9 @@
     "logo": "./assets/icon.png",
     "screenshots": [],
     "defaultPrompt": [
-      "Find and compare the best accessible StewAI recipes for my task, then preview the strongest option without running it.",
-      "Run a StewAI recipe with my input, monitor it, then summarize its declared results, step trace, and settled credit charge.",
-      "Build a private StewAI recipe for a recurring task, test it, repair failures, and commit a qualified version."
+      "Find a recipe that checks whether each citation in my draft supports its claim, and show me what it costs first.",
+      "Run a recipe that turns these meeting notes into decisions and action items, then show me what it returned.",
+      "Nothing fits my weekly operating brief. Build me a private recipe, test it, and keep it for next time."
     ]
   }
 }
